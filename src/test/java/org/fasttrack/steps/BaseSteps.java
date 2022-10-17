@@ -1,15 +1,20 @@
 package org.fasttrack.steps;
 
 import net.thucydides.core.steps.ScenarioSteps;
-import org.fasttrack.pages.AccountPage;
-import org.fasttrack.pages.HomePage;
-import org.fasttrack.pages.LoginPage;
-import org.fasttrack.pages.SearchResultsPage;
+import org.fasttrack.pages.*;
 
 public class BaseSteps extends ScenarioSteps {
 
-    protected AccountPage accountPage;
+    protected MyAccountPage myaccountPage;
     protected HomePage homePage;
-    protected LoginPage loginPage;
-    protected SearchResultsPage searchResultsPage;
+
+    protected ShopPage shopPage;
+
+    protected CartPage cartPage;
+
+    protected CheckoutPage checkoutPage;
+
+    protected CheckoutResultsPage checkoutResultsPage;
+
+    protected MyAccountResultsPage myAccountResultsPage;
 }

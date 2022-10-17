@@ -6,34 +6,45 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 
-@DefaultUrl("http://testfasttrackit.info/selenium-test/")
+@DefaultUrl("http://qa4.fasttrackit.org:8008/")
 public class HomePage extends PageObject {
 
-    @FindBy(css = ".skip-account .label")
-    private WebElementFacade accountLink;
-
-    @FindBy(css = "a[title='Log In']")
+    @FindBy(id = "menu-item-122")
     private WebElementFacade loginLink;
 
-    @FindBy( id = "search")
+    @FindBy(css=".header-search-button")
+    private WebElementFacade searchLink;
+
+    @FindBy(css=".search-field")
     private WebElementFacade searchField;
 
-    @FindBy(css = ".search-button")
-    private WebElementFacade searchButton;
+    @FindBy(id="menu-item-123")
+    private WebElementFacade shopLink;
 
-    public void clickAccountLink() {
-        clickOn(accountLink);
+    @FindBy(id="menu-item-125")
+    private WebElementFacade checkoutLink;
+
+    @FindBy(css=".archive-top-big-title")
+    private WebElementFacade titleHome;
+
+    public String getTitleHomePage(){
+        return titleHome.getText();
     }
 
     public void clickLoginLink() {
         clickOn(loginLink);
     }
 
-    public void setSearchField(String value){
-        typeInto(searchField,value);
+    public void clickSearchLink() {
+        clickOn(searchLink);
     }
 
-    public void clickSearchButton(){
-        clickOn(searchButton);
+    public void clickShopLink() { clickOn(shopLink);}
+
+    public void clickCheckoutLink() { clickOn(checkoutLink);}
+
+    public void setSearchField(String keyword)
+    {
+        typeInto(searchField,keyword);
     }
 }

@@ -12,33 +12,53 @@ public class LoginSteps extends BaseSteps {
 
     @Step
     public void navigateToLoginPage() {
-        homePage.clickAccountLink();
         homePage.clickLoginLink();
     }
 
     @Step
     public void setUserEmail(String email) {
-        loginPage.setEmailField(email);
+        myaccountPage.setEmailField(email);
     }
 
     @Step
     public void setPassword(String password) {
-        loginPage.setPasswordField(password);
+        myaccountPage.setPasswordField(password);
     }
 
     @Step
     public void clickLogin() {
-        loginPage.clickLoginButton();
+        myaccountPage.clickLoginButton();
+    }
+
+    @Step
+    public void clickLogout() {
+        myAccountResultsPage.clickLogoutButton();
+    }
+
+    @Step
+    public void verifyTheLogout()
+    {
+        Assert.assertEquals(true, myaccountPage.getLoginIsDisplayed());
     }
 
     @Step
     public void verifyUserIsLoggedIn(String userName) {
-        Assert.assertEquals("Hello, " + userName + "!", accountPage.getWelcomeText());
+         Assert.assertEquals("Hello " + userName+" (not "+userName+"? Log out)", myAccountResultsPage.getWelcomeText());
     }
 
     @Step
-    public void verifyUserNotLoggedIn(){
-        Assert.assertEquals("Invalid login or password.",loginPage.getErrorMessage());
+    public void verifyUserNotLoggedIn(String userName){
+        Assert.assertEquals("ERROR: Invalid username. Lost your password?", myaccountPage.getErrorMessage());
+    }
+
+    @Step
+    public void verifyUserNotLoggedInAfterPass(String userName){
+        Assert.assertEquals("ERROR: The password field is empty.", myaccountPage.getErrorMessage());
+    }
+
+    @Step
+    public void verifyUserNotLoggedInAfterUser(String userName){
+        Assert.assertEquals("Error: Username is required.", myaccountPage.getErrorMessage());
     }
 
     @Step
